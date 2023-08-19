@@ -35,4 +35,16 @@ router.get('/', cache('2 minutes'), async (req, res) => {
     }
 });
 
+router.get('/greeting', cache('1 minutes'), async (req, res) => {
+    try {
+        const data = {
+            greeting: "Hello World"
+        };
+
+        res.status(200).json(data)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+});
+
 module.exports = router
